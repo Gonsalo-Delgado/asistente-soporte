@@ -1,0 +1,73 @@
+<div class="view-content bg-white rounded-lg shadow-lg p-6 flex flex-col h-[599px] w-[814px] w-auto mx-auto ">
+    <h2 class="text-2xl font-bold mb-6">Preguntas Frecuentes</h2>
+
+    <div class="flex items-center gap-4 mb-6">
+        <button 
+                id="clearListButton" 
+                class="flex items-center justify-center p-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200 shadow-sm"
+                onclick="limpiarListaFaq()"
+            >
+                <i class="fa-solid fa-trash-arrow-up"></i>
+            </button>
+        <input 
+            type="text" 
+            id="searchInput" 
+            placeholder="Buscar preguntas frecuentes..." 
+            class="border rounded-lg p-2 w-full"
+            onkeyup="filterQuestions()"
+        />
+    </div>
+
+    <div class="flex-1 overflow-y-auto max-h-75 p-4 space-y-4" id="faqList">
+        {% for faq in faq_list %}
+            <div class="border rounded-lg p-4" id="faq-{{ faq.id }}">
+                <div class="flex justify-between items-start">
+                    <div class="flex-grow">
+                        <h3 class="font-semibold text-black" id="question-text-{{ faq.id }}">{{ faq.questions }}</h3>
+                    </div>
+                    <div class="flex items-center gap-4 ml-4">
+                        <button 
+                            class="w-16 text-blue-500 hover:text-blue-700 transition-colors duration-200"
+                            onclick="toggleAnswer('{{ faq.id }}')"
+                        >
+                            Ver más
+                        </button>
+                        <button 
+                            class="w-16 text-yellow-500 hover:text-yellow-700 transition-colors duration-200"
+                            onclick="editQuestion('{{ faq.id }}')"
+                        >
+                            Editar
+                        </button>
+                        <button 
+                            class="w-16 text-red-500 hover:text-red-700 transition-colors duration-200"
+                            onclick="deleteQuestion('{{ faq.id }}')"
+                        >
+                            Eliminar
+                        </button>
+                    </div>
+                </div>
+                <div id="answer-{{ faq.id }}" class="hidden mt-4 transition-all duration-300 ease-in-out">
+                    <p>{{ faq.answer|safe }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="mt-6">
+        <h3 class="font-bold text-lg mb-2">Actualizar Preguntas Frecuentes</h3>
+        <div class="mb-4">
+            <input 
+                id="newQuestion" 
+                placeholder="Escribe tu nueva pregunta aquí..." 
+                class="border rounded-lg p-2 w-full"
+                maxlength="200"
+            />
+        </div>
+        <button 
+            onclick="addNewQuestion()" 
+            class="bg-blue-500 text-white rounded-lg p-2 mt-2"
+        >
+            Añadir Pregunta
+        </button>
+    </div>
+</div>

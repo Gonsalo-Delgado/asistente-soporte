@@ -1,0 +1,78 @@
+<body class="bg-gray-100 min-h-screen p-6">
+    <div id="configView" class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 h-[600px]">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6">Configuración</h2>
+        
+        <div class="space-y-4">
+            <div class="group flex items-center justify-between p-5 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200 border border-gray-200">
+                <div class="flex gap-4">
+                    <div class="p-2 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">Personalizar</h3>
+                        <p class="text-sm text-gray-600">Seleccione los temas de Soporte técnico</p>
+                    </div>
+                </div>
+                <button id="personalizarConfigButton" onclick="selecionarTema()" class="px-4 py-2 bg-white font-medium rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors duration-200">
+                    Configurar
+                </button>
+            </div>
+
+            {% if session['user_type'] == 'admin' %}
+            <div class="group flex items-center justify-between p-5 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors duration-200 border border-gray-200">
+                <div class="flex gap-4">
+                    <div class="p-2 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900">Usuarios</h3>
+                        <p class="text-sm text-gray-600">Configurar usuarios actuales</p>
+                    </div>
+                </div>
+                <button id="usersConfigButton" class="px-4 py-2 bg-white font-medium rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors duration-200">
+                    Configurar
+                </button>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if session['user_type'] == 'admin' %}
+    <div id="usersView" class="hidden max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-900">Lista de Usuarios</h2>
+                <button id="agregarUsuarioBtn" onclick="agregarUsuario()" class="px-4 py-2 bg-green-500 text-white font-medium rounded-lg hover:bg-green-600 transition-colors duration-200 flex items-center gap-2">
+                    Agregar Usuario
+                </button>
+                        
+        </div>
+
+        <div class="flex flex-col w-[769px] h-[426px] overflow-y-auto">
+            <table class="w-full">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Usuario</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                </tbody>
+            </table>
+        </div>
+
+        <button id="backButton" class="mt-6 px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors duration-200 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Volver a Configuración
+        </button>
+    </div>
+    {% endif %}
+</body>

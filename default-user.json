@@ -1,0 +1,20 @@
+{
+  "asistente": {
+    "-OBlLDfdTbL8R-R8T-um": {
+      "user": {
+        "estado": "activo",
+        "password": "$2b$12$QH6VXohOSy2he87LWbFn6uAIRNsj2FpwY6oM8qSj8fuC8hYeFvF9y",
+        "tipo": "admin",
+        "username": "Administrador"
+      }
+    },
+    "-OBlLQ-dMX3KV12dH_52": {
+      "user": {
+        "estado": "activo",
+        "password": "$2b$12$acAkPOW8YMqJRz9hzCb43.UR9Qlwp1iwDqxH6E3ZDHNtDvhUyKVzK",
+        "tipo": "usuario",
+        "username": "Usuario"
+      }
+    }
+  }
+}

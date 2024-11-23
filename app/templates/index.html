@@ -1,0 +1,22 @@
+{% include 'layout/header.html' %}
+
+<script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/asistente/assistant.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/asistente/faq.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/asistente/resources.js') }}" defer></script>
+<script src="{{ url_for('static', filename='js/asistente/settings.js') }}" defer></script>
+
+<body class="bg-gray-100 min-h-screen py-8">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="flex gap-4">
+
+            {% include 'layout/sidebar.html' %}
+
+            <div id="content" class="flex-1">
+               
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<div class="view-content bg-white rounded-lg shadow-lg p-6 flex flex-col space-y-6 h-[600px]">
+    <h2 class="text-2xl font-bold">Recursos</h2>
+    
+    <div class="flex space-x-4 border-b">
+        <button 
+            onclick="cambiarVista('busquedaVideos')"
+            class="px-4 py-2 text-gray-600 hover:text-gray-800 focus:outline-none tab-button active"
+            data-target="busquedaVideos"
+        >
+            Buscar Videos
+        </button>
+        <button 
+            onclick="cambiarVista('videosGuardados')"
+            class="px-4 py-2 text-gray-600 hover:text-gray-800 focus:outline-none tab-button"
+            data-target="videosGuardados"
+        >
+            Videos Guardados
+        </button>
+        <button 
+            onclick="cambiarVista('recursosUtiles')"
+            class="px-4 py-2 text-gray-600 hover:text-gray-800 focus:outline-none tab-button"
+            data-target="recursosUtiles"
+        >
+            Guías
+        </button>
+    </div>
+
+    <div id="busquedaVideos" class="vista flex-1 w-full max-w-4xl mx-auto p-2">
+        <div class="space-y-4">
+            <div class="flex items-center gap-3">
+                <button 
+                    id="clearHistoryButton" 
+                    class="flex items-center justify-center p-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200 shadow-sm"
+                    onclick="limpiarHistorial()"
+                >
+                    <i class="fa-solid fa-trash-arrow-up"></i>
+                </button>
+                
+                <div class="relative flex-1 flex items-center">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        placeholder="Buscar tutoriales o recursos..." 
+                        class="border rounded-l-lg p-2 w-full "
+                    />
+                    <button 
+                        id="searchButton" 
+                        class="bg-blue-600 text-white rounded-r-lg p-2 hover:bg-blue-600"
+                        onclick="buscarVideos()"
+                    >
+                        
+                        <span>Buscar</span>
+                    </button>
+                </div>
+            </div>
+
+            
+            <div class="bg-gray-50 rounded-xl p-4">
+
+
+
+                <div class="overflow-y-auto max-h-[330px] scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+
+                    <div id="loadingMessage" class="hidden p-4">
+                        <div class="flex items-center justify-center gap-3 text-gray-600 rounded-lg">
+                            <div class="rounded-full h-5 w-5"></div>
+                            <span>Buscando videos, por favor espere...</span>
+                        </div>
+                    </div>
+
+
+                    <ul id="tutorialList" class="space-y-3">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="videosGuardados" class="vista flex-1 w-full max-w-4xl mx-auto p-2">
+        <div class="flex items-center gap-4 mb-6">
+            <button 
+                id="clearListButton" 
+                class="flex items-center justify-center p-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200 shadow-sm"
+                onclick="limpiarListaGuardados()"
+            >
+                <i class="fa-solid fa-trash-arrow-up"></i>
+            </button>
+            
+            <div class="relative flex-1">
+                <input 
+                    type="text" 
+                    id="buscarGuardado"  
+                    placeholder="Buscar video guardado"  
+                    class="border rounded-lg p-2 w-full"
+                />
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                    <i class="fas fa-search"></i>
+                </span>
+            </div>
+        </div>
+        
+        <div class="bg-gray-50 rounded-xl p-4">
+            <div class="overflow-y-auto max-h-[315px] scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+                <ul id="videosLista" class="space-y-3">
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="recursosUtiles" class="vista flex-1 w-full max-w-4xl mx-auto p-2">
+        <div class="flex items-center gap-4 mb-6">
+            <button 
+                id="clearGuideButton" 
+                class="flex items-center justify-center p-2 bg-gray-500 hover:bg-gray-600 text-white rounded-lg transition-colors duration-200 shadow-sm"
+                onclick="limpiarListaGuias()"
+            >
+               <i class="fa-solid fa-trash-arrow-up"></i>
+            </button>
+            
+            <div class="relative flex-1">
+                <input 
+                    type="text" 
+                    id="buscarGuias"  
+                    placeholder="Buscar guías"  
+                    class="border rounded-lg p-2 w-full"
+                />
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+                    <i class="fas fa-search"></i>
+                </span>
+            </div>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-4">
+            <div class="overflow-y-auto max-h-[315px] scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent" >
+                <ul id="guideContainer" class="space-y-3">
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
